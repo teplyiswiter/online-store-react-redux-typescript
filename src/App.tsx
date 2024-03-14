@@ -1,13 +1,12 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
-import Header from "./components/header/Header";
 import Homepage from "./pages/homepage";
 import Contact from "./pages/contact";
 import HeaderLayout from "./components/layout/header-layout";
-import Footer from "./components/footer/footer";
 import MainLayout from "./components/layout/main-layout";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import Products from "./pages/products";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +22,10 @@ const router = createBrowserRouter([
                     {
                         path: "/contact",
                         element: <Contact />,
+                    },
+                    {
+                        path: "/products",
+                        element: <Products />,
                     },
                 ],
             },
