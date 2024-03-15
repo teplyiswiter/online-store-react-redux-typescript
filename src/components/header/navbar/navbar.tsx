@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import Cart from "../../cart/cart";
 
 type NavbarProps = {
     items: { to: string; name: string }[];
@@ -19,7 +20,9 @@ function Navbar({ items }: NavbarProps) {
                     </Link>
                 ))}
             </div>
-            <div></div>
+            <div>
+                <Cart />
+            </div>
         </nav>
     );
 }

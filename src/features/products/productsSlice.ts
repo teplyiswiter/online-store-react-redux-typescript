@@ -16,7 +16,7 @@ const initialState: ProductState = {
     product: {
         category: "",
         description: "",
-        id: 0,
+        id: "0",
         images: [],
         price: 0,
         title: "",

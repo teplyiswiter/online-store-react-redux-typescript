@@ -17,7 +17,7 @@ function Homepage() {
             <h2>Top products</h2>
             <div className="flex flex-wrap">
                 {products.map((product) => (
-                    <ProductCard product={product} />
+                    <ProductCard key={product.id} product={product} />
                 ))}
             </div>
         </div>

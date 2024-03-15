@@ -2,10 +2,10 @@ export interface Product {
     category: string;
     description: string;
     discountPercentage?: number;
-    id: number;
+    id: string;
     images: string[];
     price: number;
-    rating?: string;
+    rating?: number;
     title: string;
     stock: number;
     brand: string;
