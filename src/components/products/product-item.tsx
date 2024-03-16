@@ -3,16 +3,22 @@ import { addToCart } from "../../features/cart/cartSlice";
 import { Product } from "../../types/product";
 import { ReactComponent as IconCart } from "../../images/cart-for-button.svg";
 import { ReactComponent as IconStar } from "../../images/star.svg";
+import { showModal } from "../../features/modal/modalSlice";
 
-export function ProductCard(props: { product: Product }) {
-    const { product } = props;
+export default function ProductCard(props: {
+    product: Product;
+    className: string;
+}) {
+    const { product, className } = props;
     const dispatch = useAppDispatch();
     const fullStars = Math.round(product.rating || 0);
     return (
-        <div className="relative m-2 max-w-xs w-full flex max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+        <div
+            className={`${className} relative flex flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md`}
+        >
             <span className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
                 <img
-                    className="object-cover"
+                    className="object-cover w-full"
                     src={product.thumbnail}
                     alt={product.title}
                 />
@@ -28,7 +34,7 @@ export function ProductCard(props: { product: Product }) {
                         {product.title}
                     </h5>
                 </span>
-                <div className="mt-2 mb-5 flex items-center justify-between">
+                <div className="mt-2 mb-5 flex items-center justify-between sm:flex-col md:flex-row">
                     <p>
                         <span className="text-3xl font-bold text-slate-900">
                             ${product.price}
@@ -61,7 +67,10 @@ export function ProductCard(props: { product: Product }) {
                     )}
                 </div>
                 <button
-                    onClick={() => dispatch(addToCart(product))}
+                    onClick={() => {
+                        dispatch(addToCart(product));
+                        dispatch(showModal());
+                    }}
                     className="flex w-full items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
                 >
                     <IconCart />

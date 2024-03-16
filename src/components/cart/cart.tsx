@@ -11,7 +11,7 @@ export default function Cart() {
                         {items.length}
                     </p>
                 </div>
-                <IconCart />
+                <IconCart className="mt-4 h-6 w-6" />
             </div>
         </div>
     );

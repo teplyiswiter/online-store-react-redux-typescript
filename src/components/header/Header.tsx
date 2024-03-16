@@ -7,7 +7,7 @@ const menuItems = [
 
 function Header() {
     return (
-        <header className="">
+        <header className="sticky top-0 z-50">
             <Navbar items={menuItems} />
         </header>
     );
