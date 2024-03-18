@@ -13,6 +13,7 @@ function Navbar({ items }: NavbarProps) {
             <div>
                 {items.map(({ to, name }) => (
                     <Link
+                        key={name}
                         to={to}
                         className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2"
                     >

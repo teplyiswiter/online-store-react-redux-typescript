@@ -1,3 +1,4 @@
+import { useAppSelector } from "../../app/hooks";
 import Navbar from "./navbar/navbar";
 
 const menuItems = [
@@ -6,8 +7,11 @@ const menuItems = [
 ];
 
 function Header() {
+    // Hide sticky header when modal is shown
+    const { isShown: isModalShown } = useAppSelector((state) => state.modal);
+
     return (
-        <header className="sticky top-0 z-50">
+        <header className={`${!isModalShown ? "sticky" : ""} top-0 z-50`}>
             <Navbar items={menuItems} />
         </header>
     );

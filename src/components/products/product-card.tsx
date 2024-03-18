@@ -4,6 +4,7 @@ import { Product } from "../../types/product";
 import { ReactComponent as IconCart } from "../../images/cart-for-button.svg";
 import { ReactComponent as IconStar } from "../../images/star.svg";
 import { showModal } from "../../features/modal/modalSlice";
+import { Link } from "react-router-dom";
 
 export default function ProductCard(props: {
     product: Product;
@@ -31,7 +32,11 @@ export default function ProductCard(props: {
             <div className="mt-4 px-5 pb-5">
                 <span>
                     <h5 className="text-xl tracking-tight text-slate-900">
-                        {product.title}
+                        <Link
+                            to={`/products/${product.category}/${product.id}`}
+                        >
+                            {product.title}
+                        </Link>
                     </h5>
                 </span>
                 <div className="mt-2 mb-5 flex items-center justify-between sm:flex-col md:flex-row">
@@ -52,12 +57,20 @@ export default function ProductCard(props: {
                     </p>
                     {product.rating && (
                         <div className="flex items-center">
-                            {Array.apply(null, Array(fullStars)).map((_) => (
-                                <IconStar className="h-5 w-5 text-yellow-300" />
-                            ))}
+                            {Array.apply(null, Array(fullStars)).map(
+                                (_, index) => (
+                                    <IconStar
+                                        key={index}
+                                        className="h-5 w-5 text-yellow-300"
+                                    />
+                                )
+                            )}
                             {Array.apply(null, Array(5 - fullStars)).map(
-                                (_) => (
-                                    <IconStar className="h-5 w-5 text-grey-300" />
+                                (_, index) => (
+                                    <IconStar
+                                        key={index}
+                                        className="h-5 w-5 text-grey-300"
+                                    />
                                 )
                             )}
                             <span className="mr-2 ml-3 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
